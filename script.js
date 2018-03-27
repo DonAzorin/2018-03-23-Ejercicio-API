@@ -22,24 +22,32 @@ const populate = document.getElementById('populate');
 
 function getData() {
   fetch('https://rickandmortyapi.com/api/character/')
-  .then((resp) => resp.json())
-  .then(function (data) {
-    console.log(data);
-    let characterInfo = data.results.map(function(character){
-      return `
-        <div class="name">
-        ${character.name}
-        </div>
-        <div class="image">
-        <img src="${character.image}" />
-        </div>
-      `
-    }).join ('');
-    populate.innerHTML = characterInfo;
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
+    .then((resp) => resp.json())
+    .then(function (data) {
+      console.log(data);
+      let characterInfo = data.results.map(function(character){
+        return `
+          <div class="card">
+            <div class="name">
+            ${character.name}
+            </div>
+            <div class="image">
+            <img src="${character.image}" />
+            </div>
+            <div class="info">
+              <p>Status: ${character.status}</p>
+              <p>Species: ${character.species}</p>
+              <p>Gender: ${character.gender}</p>
+              <p>Type: ${character.type}</p>
+            </div>
+          </div>
+        `
+      }).join ('');
+      populate.innerHTML = characterInfo;
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
 }
 getData();
 
