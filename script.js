@@ -28,18 +28,11 @@ function getData() {
       let characterInfo = data.results.map(function(character){
         return `
           <div class="card">
-            <div class="name">
             ${character.name}
-            </div>
-            <div class="image">
             <img src="${character.image}" />
-            </div>
-            <div class="info">
-              <p>Status: ${character.status}</p>
-              <p>Species: ${character.species}</p>
-              <p>Gender: ${character.gender}</p>
-              <p>Type: ${character.type}</p>
-            </div>
+            <p>Status: ${character.status}</p>
+            <p>Species: ${character.species}</p>
+            <p>Gender: ${character.gender}</p>
           </div>
         `
       }).join ('');
